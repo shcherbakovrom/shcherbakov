@@ -4,12 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Roman Shcherbakov — GT4 racing driver</title>
-<meta name="description" content="Roman Shcherbakov, 18. GT4 racing driver targeting China GT 2027 and a route into GT3.">
+<meta name="description" content="Roman Shcherbakov, 18. GT4 racing driver on the road to GT3. The 2027 season is being put together right now.">
 
 <meta property="og:title" content="Roman Shcherbakov — GT4 racing driver">
-<meta property="og:description" content="18 years old. GT4 today, GT3 next. 27,000 followers across TikTok and Instagram.">
+<meta property="og:description" content="18 years old. Karting, ice, touring, GT4. Where I race in 2027 is announced on my channels first.">
 <meta property="og:type" content="website">
-<!-- ЗАМЕНИТЬ: ссылка на превью-картинку 1200x630 после загрузки на сайт -->
 <meta property="og:image" content="images/og.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,13 +17,14 @@
 
 <style>
 :root{
-  --ink:#14181f;
-  --ink-soft:#252c37;
-  --paper:#edeef0;
-  --white:#ffffff;
-  --grey:#6e767f;
-  --red:#d8232a;
-  --orange:#f07a21;
+  --void:#0a0d13;
+  --panel:#111722;
+  --panel-2:#161d29;
+  --line:#26303f;
+  --text:#eef2f7;
+  --muted:#8a95a5;
+  --red:#e8262e;
+  --orange:#ff8f26;
 
   --wrap:1080px;
   --gutter:24px;
@@ -39,8 +39,8 @@ html{scroll-behavior:smooth;}
 
 body{
   margin:0;
-  background:var(--paper);
-  color:var(--ink);
+  background:var(--void);
+  color:var(--text);
   font-family:'Barlow',system-ui,sans-serif;
   font-size:17px;
   line-height:1.6;
@@ -58,19 +58,25 @@ h1,h2,h3,.num{
 }
 
 a{color:inherit;}
-a:focus-visible,button:focus-visible{
+a:focus-visible{
   outline:3px solid var(--orange);
   outline-offset:3px;
 }
 
 /* ---------- HERO ---------- */
-.hero{background:var(--white);color:var(--ink);border-bottom:6px solid var(--red);}
+.hero{
+  background:var(--void);
+  border-bottom:6px solid var(--red);
+  position:relative;
+  overflow:hidden;
+}
 .hero .wrap{
   display:grid;
   grid-template-columns:1fr 0.85fr;
   gap:40px;
   align-items:end;
   padding-top:72px;
+  position:relative;
 }
 .hero__text{padding-bottom:64px;}
 
@@ -96,10 +102,10 @@ a:focus-visible,button:focus-visible{
   font-weight:500;
   margin:18px 0 0;
   max-width:30ch;
-  color:var(--grey);
+  color:var(--muted);
   animation:rise .7s .16s cubic-bezier(.2,.7,.3,1) both;
 }
-.hero__line b{color:var(--ink);font-weight:600;}
+.hero__line b{color:var(--text);font-weight:600;}
 
 .hero__photo{
   align-self:end;
@@ -113,6 +119,8 @@ a:focus-visible,button:focus-visible{
   max-height:600px;
   object-fit:contain;
   object-position:bottom;
+  -webkit-mask-image:linear-gradient(to bottom,#000 0,#000 78%,transparent 100%);
+  mask-image:linear-gradient(to bottom,#000 0,#000 78%,transparent 100%);
 }
 
 .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px;animation:rise .7s .24s cubic-bezier(.2,.7,.3,1) both;}
@@ -125,44 +133,45 @@ a:focus-visible,button:focus-visible{
   letter-spacing:.02em;
   text-decoration:none;
   border:2px solid transparent;
-  transition:background .18s ease,color .18s ease;
+  transition:background .18s ease,color .18s ease,border-color .18s ease;
 }
-.btn--primary{background:var(--red);color:var(--white);}
-.btn--primary:hover{background:#b81b22;}
-.btn--ghost{border-color:#c3c8ce;color:var(--ink);}
-.btn--ghost:hover{border-color:var(--ink);}
+.btn--primary{background:var(--red);color:#fff;}
+.btn--primary:hover{background:#ff3b43;}
+.btn--ghost{border-color:var(--line);color:var(--text);}
+.btn--ghost:hover{border-color:var(--text);}
 
 /* ---------- REACH BAND ---------- */
-.reach{background:var(--white);}
+.reach{background:var(--panel);}
 .reach .wrap{padding:52px var(--gutter) 46px;}
-.reach h2{font-size:15px;font-weight:600;letter-spacing:.06em;color:var(--grey);font-family:'Barlow',sans-serif;line-height:1.4;margin-bottom:26px;}
+.reach h2{font-size:15px;font-weight:600;letter-spacing:.06em;color:var(--muted);font-family:'Barlow',sans-serif;line-height:1.4;margin-bottom:26px;}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;}
-.stat .num{display:block;font-size:clamp(38px,5.4vw,58px);color:var(--ink);}
-.stat p{margin:6px 0 0;font-size:15px;color:var(--grey);line-height:1.35;}
+.stat .num{display:block;font-size:clamp(38px,5.4vw,58px);color:var(--text);}
+.stat p{margin:6px 0 0;font-size:15px;color:var(--muted);line-height:1.35;}
 
 /* ---------- GENERIC SECTION ---------- */
 section .wrap{padding:72px var(--gutter);}
 .sect-head{font-size:clamp(30px,4.6vw,44px);margin-bottom:28px;}
-.lead{max-width:62ch;font-size:19px;}
+.lead{max-width:62ch;font-size:19px;color:var(--muted);}
 .lead + .lead{margin-top:16px;}
 
 /* ---------- PATH ---------- */
-.path{background:var(--paper);}
-.steps{list-style:none;margin:36px 0 0;padding:0;border-left:2px solid #cfd3d8;}
+.path{background:var(--void);}
+.steps{list-style:none;margin:36px 0 0;padding:0;border-left:2px solid var(--line);}
 .steps li{position:relative;padding:0 0 30px 26px;}
 .steps li::before{
   content:"";position:absolute;left:-7px;top:8px;
-  width:12px;height:12px;background:var(--ink);border-radius:50%;
+  width:12px;height:12px;background:#5b6675;border-radius:50%;
 }
 .steps li:last-child{padding-bottom:0;}
-.steps li.is-target::before{background:var(--orange);}
-.steps .year{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:26px;line-height:1;display:block;}
-.steps .what{margin:4px 0 0;color:var(--ink-soft);}
+.steps li.is-target::before{background:var(--orange);box-shadow:0 0 0 5px rgba(255,143,38,.16);}
+.steps .year{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:26px;line-height:1;display:block;color:var(--text);}
+.steps .what{margin:4px 0 0;color:var(--muted);}
 .steps .is-target .year{color:var(--orange);}
+.steps .is-target .what{color:var(--text);}
 .step-media{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0 0;max-width:620px;}
 .step-media img{display:block;width:100%;height:190px;object-fit:cover;object-position:center;}
 .step-media img.crop-top{object-position:center 18%;}
-.step-media figcaption{grid-column:1/-1;font-size:14px;color:var(--grey);margin-top:2px;}
+.step-media figcaption{grid-column:1/-1;font-size:14px;color:var(--muted);margin-top:2px;}
 .step-media.one{grid-template-columns:1fr;max-width:300px;}
 .step-media.one img{height:auto;}
 .step-media.one.wide{max-width:460px;}
@@ -171,8 +180,30 @@ section .wrap{padding:72px var(--gutter);}
   .step-media img{height:auto;}
 }
 
+/* ---------- NEXT SEASON ---------- */
+.next{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.next .wrap{padding:76px var(--gutter);}
+.next .sect-head{color:var(--orange);}
+.next .lead{color:var(--text);max-width:56ch;}
+.next .lead.dim{color:var(--muted);}
+.follow{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px;}
+.follow a{
+  display:inline-block;
+  padding:13px 24px;
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:600;
+  font-size:20px;
+  letter-spacing:.02em;
+  text-decoration:none;
+  background:var(--panel-2);
+  border:1px solid var(--line);
+  transition:border-color .18s ease,background .18s ease;
+}
+.follow a:hover{border-color:var(--orange);background:#1c2432;}
+.follow a b{color:var(--muted);font-weight:500;margin-left:8px;}
+
 /* ---------- CONTACT ---------- */
-.contact{background:var(--white);}
+.contact{background:var(--void);}
 .contact .wrap{padding-top:66px;padding-bottom:66px;}
 .mailto{
   display:inline-block;
@@ -186,11 +217,8 @@ section .wrap{padding:72px var(--gutter);}
   word-break:break-word;
 }
 .mailto:hover{border-color:var(--red);}
-.socials{margin-top:30px;display:flex;flex-wrap:wrap;gap:22px;font-size:17px;}
-.socials a{text-decoration:none;border-bottom:1px solid #c3c8ce;padding-bottom:2px;}
-.socials a:hover{border-color:var(--ink);}
 
-footer{background:var(--ink);color:#7d858e;font-size:14px;}
+footer{background:#06080c;color:#67717f;font-size:14px;}
 footer .wrap{padding:26px var(--gutter);}
 
 @media (max-width:860px){
@@ -199,6 +227,7 @@ footer .wrap{padding:26px var(--gutter);}
   .hero__text{padding-bottom:0;}
   .hero__photo img{width:100%;max-height:none;}
   section .wrap{padding:54px var(--gutter);}
+  .next .wrap{padding:56px var(--gutter);}
 }
 </style>
 </head>
@@ -209,9 +238,10 @@ footer .wrap{padding:26px var(--gutter);}
     <div class="hero__text">
       <span class="startnumber">27</span>
       <h1>Roman Shcherbakov</h1>
-      <p class="hero__line">GT4 racing driver, 18 years old. <b>Next stop: China GT in 2027, then GT3.</b></p>
+      <p class="hero__line">GT4 racing driver, 18 years old. <b>Where I race in 2027 is being decided right now.</b></p>
       <div class="actions">
-        <a class="btn btn--primary" href="#contact">Get in touch</a>
+        <a class="btn btn--primary" href="#next">Follow the 2027 season</a>
+        <a class="btn btn--ghost" href="#contact">Get in touch</a>
       </div>
     </div>
     <div class="hero__photo">
@@ -235,7 +265,7 @@ footer .wrap{padding:26px var(--gutter);}
 <section class="path">
   <div class="wrap">
     <h2 class="sect-head">The route</h2>
-    <p class="lead">I first sat in a kart at eight. By 2017 it had turned into a professional career: karting, then ice racing, then a steady climb through the Russian circuit ladder. The next step is Asia.</p>
+    <p class="lead">I first sat in a kart at eight. By 2017 it had turned into a professional career: karting, then ice racing, then a steady climb through the Russian circuit ladder — and now GT machinery.</p>
     <ol class="steps">
       <li><span class="year">2017</span><p class="what">Where the professional career started. Karting: rental racing first, then competitive events and the Sodi World Series — the foundation of racecraft and car control.</p>
         <figure class="step-media one">
@@ -270,16 +300,29 @@ footer .wrap{padding:26px var(--gutter);}
           <figcaption>Touring, 2025 — RCRS Endurance.</figcaption>
         </figure>
       </li>
-      <li><span class="year">2026</span><p class="what">A transition year: first laps in GT4 machinery, testing in a Mercedes-AMG GT4, international opportunities and putting together a GT programme in Asia.</p>
+      <li><span class="year">2026</span><p class="what">A transition year: first laps in GT4 machinery, testing in a Mercedes-AMG GT4, and putting the next programme together.</p>
         <figure class="step-media">
           <img class="crop-top" src="images/gt4-2026-pitlane.jpg" alt="Mercedes-AMG GT4 in the pit lane" width="1050" height="1400" loading="lazy">
           <img src="images/gt4-2026-onboard.jpg" alt="Onboard in the Mercedes-AMG GT4" width="1400" height="796" loading="lazy">
           <figcaption>GT4 testing, 2026.</figcaption>
         </figure>
       </li>
-      <li class="is-target"><span class="year">2027</span><p class="what">China GT, GT4 class. A full season, and the start of a long-term international programme.</p></li>
-      <li class="is-target"><span class="year">Next</span><p class="what">GT3, with GT World Challenge Asia as one of the main long-term targets.</p></li>
+      <li class="is-target"><span class="year">2027</span><p class="what">Not public yet. The series, the team and the car are being settled — it goes out on my channels first.</p></li>
+      <li class="is-target"><span class="year">After that</span><p class="what">GT3. That is what every season so far has been building toward.</p></li>
     </ol>
+  </div>
+</section>
+
+<section class="next" id="next">
+  <div class="wrap">
+    <h2 class="sect-head">2027 is not announced yet</h2>
+    <p class="lead">The next season is being put together right now — the series, the team, the car. Nothing is public until it is signed.</p>
+    <p class="lead dim">When it is, it goes out on my channels first: the livery, the calendar, and the first laps in the new car. Follow if you want to see where I line up.</p>
+    <div class="follow">
+      <a href="https://www.instagram.com/shcherbakovv_27">Instagram <b>5.6K</b></a>
+      <a href="https://www.tiktok.com/@shcherbakov_roman27">TikTok <b>21K</b></a>
+      <a href="https://youtube.com/@romanshcherbakov27">YouTube</a>
+    </div>
   </div>
 </section>
 
@@ -287,11 +330,6 @@ footer .wrap{padding:26px var(--gutter);}
   <div class="wrap">
     <h2 class="sect-head">Get in touch</h2>
     <a class="mailto" href="mailto:shcherbakovrom88@gmail.com">shcherbakovrom88@gmail.com</a>
-    <div class="socials">
-      <a href="https://www.instagram.com/shcherbakovv_27">Instagram</a>
-      <a href="https://www.tiktok.com/@shcherbakov_roman27">TikTok</a>
-      <a href="https://youtube.com/@romanshcherbakov27">YouTube</a>
-    </div>
   </div>
 </section>
 
